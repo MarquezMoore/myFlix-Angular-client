@@ -1,16 +1,32 @@
+// src/app/app.component.ts
 import { Component } from '@angular/core';
 
-// Components metadata
+// Custom Components
+import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
+
+// Angular Material Imports
+import { MatDialog } from '@angular/material/dialog';
+
+/* 
+  Component Decorator
+*/
 @Component({
-  // The select is the tag name that will be used to embed this component (e.g. <app-root></app-root>)
   selector: 'app-root',
-  // the templateUrl is the file path for the components html template
   templateUrl: './app.component.html',
-  // the templateUrl is the file path for the components styling
   styleUrls: ['./app.component.scss']
 })
-
-// Actual component
+/* 
+  Component 
+*/
 export class AppComponent {
-  title: string = 'myFlix-Angular-client';
+  title = 'myFlix-Angular-client';
+
+  constructor(public dialog: MatDialog) { }
+  // This is the function that will open the dialog when the signup button is clicked  
+  openUserRegistrationDialog(): void {
+      this.dialog.open(UserRegistrationFormComponent, {
+  // Assigning the dialog a width
+      width: '280px'
+      });
+    }
 }
