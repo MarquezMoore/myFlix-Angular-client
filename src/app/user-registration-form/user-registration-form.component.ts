@@ -1,14 +1,13 @@
 // src/app/user-registration-form/user-registration-form.component.ts
 import { Component, OnInit, Input } from '@angular/core';
 
-// You'll use this import to close the dialog on success
+// Angular Material
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
-// This import brings in the API calls we created in 6.2
+// Custom Services
 import { UserRegistrationService } from '../fetch-api-data.service';
 
-// This import is used to display notifications back to the user
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -40,11 +39,9 @@ export class UserRegistrationFormComponent implements OnInit {
       this.snackBar.open(result, 'OK', {
         duration: 2000
       });
-    }, (result) => {
-      console.log(result);
-      this.snackBar.open(result, 'OK', {
-        duration: 6000
-      });
+    }, err => {
+      console.log(err);
+      this.snackBar.open(err, 'OK');
     });
   }
 

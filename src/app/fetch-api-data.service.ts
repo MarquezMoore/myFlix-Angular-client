@@ -67,13 +67,8 @@ export class UserLoginService {
   }
 
   // API Call 
-  public userLogin(username: string, password: string): Observable<any> {
-    return this.http.post(`${apiUrl}login`, 
-      {
-        Username: username,
-        Password: password
-      }
-    )
+  public userLogin(userData: object): Observable<any> {
+    return this.http.post(`${apiUrl}login`, userData)
   }
 }
 /* 
