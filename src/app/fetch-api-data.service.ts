@@ -21,7 +21,7 @@ import { map } from 'rxjs/operators';
 
 
 // Declaring the api url that will provide data for the client app
-const apiUrl = 'https://my-fav-flix.herokuapp.com/api/';
+const url = 'https://my-fav-flix.herokuapp.com/';
 const token = localStorage.getItem('token');
 
 // The following decorator specifies that this services will be available in the root component
@@ -42,7 +42,7 @@ export class UserRegistrationService {
 
     console.log(userDetails);
 
-    return this.http.post(`${apiUrl}users`, userDetails).pipe(
+    return this.http.post(`${url}api/users`, userDetails).pipe(
       catchError(this.handleError)
     );
   }
@@ -62,25 +62,32 @@ export class UserRegistrationService {
 /* 
   2.) User Login -- post /login
 */
+@Injectable({
+  providedIn: 'root'
+})
 export class UserLoginService {
   constructor(private http: HttpClient) {
   }
 
   // API Call 
   public userLogin(userData: object): Observable<any> {
-    return this.http.post(`${apiUrl}login`, userData)
+    console.log(userData)
+    return this.http.post(`${url}login`, userData)
   }
 }
 /* 
   3.) Get Movies
 */
+@Injectable({
+  providedIn: 'root'
+})
 export class GetMoviesService {
   constructor(private http: HttpClient) {
   }
 
   // API Call
   public getAllMovies(): Observable<any> {
-    return this.http.get(`${apiUrl}users`, 
+    return this.http.get(`${url}api/users`, 
       {
         headers: new HttpHeaders({
             Authorization: `Bearer ${token}`,
@@ -98,12 +105,15 @@ export class GetMoviesService {
 /* 
   4.) Get Director -- movies/:title/director
 */
+@Injectable({
+  providedIn: 'root'
+})
 export class GetDirectorService {
   constructor(private http: HttpClient){
   }
   // API Call
   public getDirector(title: string): Observable<any> {
-    return this.http.get(`${apiUrl}movies/${title}/director`,
+    return this.http.get(`${url}api/movies/${title}/director`,
       {
         headers: new HttpHeaders({
           Authorization: `Bear ${token}`
@@ -121,12 +131,15 @@ export class GetDirectorService {
 /* 
   5.) Get Genre -- genre/:genre
 */
+@Injectable({
+  providedIn: 'root'
+})
 export class GetGenreService {
   constructor(private http: HttpClient){
   }
   // API Call
   public getGenre(genre: string): Observable<any> {
-    return this.http.get(`${apiUrl}genre/${genre}`,
+    return this.http.get(`${url}api/genre/${genre}`,
       {
         headers: new HttpHeaders({
           Authorization: `Bear ${token}`
@@ -143,13 +156,16 @@ export class GetGenreService {
 /* 
   6.) Get User -- users/:username
 */
+@Injectable({
+  providedIn: 'root'
+})
 export class GetUserService {
   constructor(private http: HttpClient){
   }
 
   // API Call
   public getUser(username: string): Observable<any> {
-    return this.http.get(`${apiUrl}users/${username}`,
+    return this.http.get(`${url}api/users/${username}`,
       {
         headers: new HttpHeaders({
           Authorization: `Bear ${token}`
@@ -166,13 +182,16 @@ export class GetUserService {
 /* 
   7.) Remove From Favorites -- users/:username/:movieID
 */
+@Injectable({
+  providedIn: 'root'
+})
 export class RemoveFromFavoritesService {
   constructor(private http: HttpClient){
   }
 
   // API Call
   public removeFromFavorites(username: string, movieID: string): Observable<any> {
-    return this.http.delete(`${apiUrl}users/${username}/${movieID}`,
+    return this.http.delete(`${url}api/users/${username}/${movieID}`,
       {
         headers: new HttpHeaders({
           Authorization: `Bear ${token}`
@@ -190,13 +209,16 @@ export class RemoveFromFavoritesService {
 /* 
   8.) Add to Favorites -- users/:username/:movieID
 */
+@Injectable({
+  providedIn: 'root'
+})
 export class AddToFavoritesService {
   constructor(private http: HttpClient){
   }
 
    // API Call
    public addToFavorites(username: string, movieID: string): Observable<any> {
-    return this.http.put(`${apiUrl}users/${username}/${movieID}`,
+    return this.http.put(`${url}api/users/${username}/${movieID}`,
       // header options
       {
         headers: new HttpHeaders({
@@ -216,13 +238,16 @@ export class AddToFavoritesService {
   9.) Edit User -- put users/:username
 
 */
+@Injectable({
+  providedIn: 'root'
+})
 export class EditUserService {
   constructor(private http: HttpClient){
   }
 
   // API Call
   public editUser(username: string): Observable<any> {
-    return this.http.put(`${apiUrl}users/${username}`,
+    return this.http.put(`${url}api/users/${username}`,
       {
         headers: new HttpHeaders({
           Authorization: `Bear ${token}`
@@ -240,13 +265,16 @@ export class EditUserService {
 /* 
   10.) Delete User -- delete users/:username
 */
+@Injectable({
+  providedIn: 'root'
+})
 export class DeleteUserService {
   constructor(private http: HttpClient){
   }
 
   // API Call
   public deleteUser(username: string): Observable<any> {
-    return this.http.put(`${apiUrl}users/${username}`,
+    return this.http.put(`${url}api/users/${username}`,
       {
         headers: new HttpHeaders({
           Authorization: `Bear ${token}`
@@ -265,6 +293,9 @@ export class DeleteUserService {
   11.) Delete Movie -- delete users/:username/:movieID
 
 */
+@Injectable({
+  providedIn: 'root'
+})
 export class DeleteMoviesService {
   constructor(private http: HttpClient){
   }
@@ -272,7 +303,7 @@ export class DeleteMoviesService {
   
   // API Ca;;
   public deleteMovie(username: string, movieID: string): Observable<any> {
-    return this.http.delete(`${apiUrl}user/${username}/${movieID}`,
+    return this.http.delete(`${url}api/user/${username}/${movieID}`,
       {
         headers: new HttpHeaders({
           Authorization: `Bear ${token}`
