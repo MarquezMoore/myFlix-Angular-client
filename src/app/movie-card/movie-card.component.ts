@@ -31,7 +31,7 @@ export class MovieCardComponent implements OnInit {
       return this.movies;
     }, err => {
       console.log(`getMovies error in MovieCardComponent: ${err}`)
-      this.snackBar.open(`Action can not be completed: ${err}`, 'OK')
+      this.snackBar.open(`App failed to open movies.. Pleas try again later..`, 'OK')
     });
   }
 

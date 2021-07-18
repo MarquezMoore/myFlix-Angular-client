@@ -87,10 +87,12 @@ export class GetMoviesService {
 
   // API Call
   public getAllMovies(): Observable<any> {
-    return this.http.get(`${url}api/users`, 
+    const token = localStorage.getItem('token');
+    console.log(token)
+    return this.http.get(`${url}api/movies`, 
       {
         headers: new HttpHeaders({
-            Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         })
       }
     );
