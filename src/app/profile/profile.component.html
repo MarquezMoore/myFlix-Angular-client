@@ -1,2 +1,10 @@
-<app-nav-bar></app-nav-bar>
-<p>profile works!</p>
+<div class="container-fluid p-0 vh-100 d-flex flex-column">
+  <app-nav-bar ></app-nav-bar>
+  <div class="d-flex overflow-hidden">
+    <app-side-nav class="col-3"></app-side-nav>
+    <div class="h-100 overflow-scroll p-4">
+      <app-favorites-list class="" ></app-favorites-list>
+    </div>  
+  </div>
+</div>
+

@@ -1,17 +1,17 @@
-<div class="welcome-page bg-dark">
-  <header class="m-3">
-      
-    <span class="fs-1 text-light">  Welcome to myFlix! </span>
-    
-  </header>
-  <main class="welcome-main">
-    <div class="welcome-main__ctas">
-      <button class="bg-light text-dark" mat-raised-button (click)="openUserRegistrationDialog()" style="margin-right: 10px;" >
+
+<div class="welcome-page d-flex justify-content-center align-items-center text-light">
+  <section class="welcome-main rounded p-4 shadow-lg">
+    <span class="fs-1  p-5 fw-light">  Welcome to myFlix! </span>
+    <div class="p-4 img-fluid w-100 d-flex justify-content-center">
+      <img src="https://source.unsplash.com/random/350x350" alt="">
+    </div>
+    <div class="welcome-main__ctas d-flex flex-column align-items-center fw-lighter">
+      <button class="btn negative-btn action w-75 mb-3" mat-raised-button (click)="openUserRegistrationDialog()" >
         Sign Up
       </button>
-      <button class="bg-light text-dark" mat-raised-button (click)="openUserLoginDialog()" style="margin-right: 10px;" >
+      <button class="btn negative-btn text-dark action w-75" mat-raised-button (click)="openUserLoginDialog()"  >
         Login
       </button>
     </div>
-  </main>
+  </section>
 </div>

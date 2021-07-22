@@ -1,0 +1,29 @@
+<div class="dialog-container">
+  <!-- Dialog Header -->
+  <section class="dialog-header pb-3">
+    <!-- Title -->
+    <span class="fs-4">{{data.name}}</span>
+    <!-- Dates -->
+    <div class="text-secondary">
+      <span class="pe-3">Born: {{data.birthday}}</span>
+      <span *ngIf="data.deathday">Death: {{data.deathday}}</span>
+    </div>
+  </section>
+  <!-- Dialog Content -->
+  <mat-dialog-content >
+    <!-- Description -->
+    <div>
+      <span>{{data.bio}}</span>
+    </div>
+  </mat-dialog-content>
+  <!-- Dialog Action -->
+    
+  <mat-dialog-actions class="d-flex justify-content-end">
+    <Button class="btn btn-dark btn-sm" mat-dialog-close>Close</Button>
+  </mat-dialog-actions>
+</div>
+
+
+
+
+

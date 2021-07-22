@@ -1,0 +1,24 @@
+<div class="dialog-container">
+  <!-- Dialog Header -->
+  <section class="dialog-header pb-3">
+    <!-- Title -->
+    <span class="fs-4">{{data.title}}</span>
+    <!-- Director and Genre -->
+    <div class="text-secondary">
+      <span class="pe-3">Genre: {{data.genre}}</span>
+      <span>Director: {{data.director}}</span>
+    </div>
+  </section>
+  <!-- Dialog Content -->
+  <mat-dialog-content >
+    <!-- Description -->
+    <div>
+      <span>{{data.description}}</span>
+    </div>
+  </mat-dialog-content>
+  <!-- Dialog Action -->
+    
+  <mat-dialog-actions class="d-flex justify-content-end">
+    <Button mat-dialog-close class="btn btn-dark btn-sm">Close</Button>
+  </mat-dialog-actions>
+</div>

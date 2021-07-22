@@ -1,13 +1,13 @@
 <mat-card class="col-18"> 
   <mat-card-header>
-    <mat-card-title>Sign Up!</mat-card-title>
+    <mat-card-title>Data Editor</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <div *ngIf="loading" class="d-flex justify-content-center p-3">
       <mat-spinner
       diameter="35"></mat-spinner>
     </div>
-    <form>
+    <form class="p-3">
       <mat-form-field class="w-100">
         <input
           matInput
@@ -41,16 +41,6 @@
       <mat-form-field class="w-100">
         <input
           matInput
-          [(ngModel)]="userData.password"
-          type = "password"
-          placeholder="Password"
-          name="password"
-          required
-        >
-      </mat-form-field>
-      <mat-form-field class="w-100">
-        <input
-          matInput
           [(ngModel)]="userData.email"
           type = "email"
           placeholder="Email"
@@ -72,10 +62,10 @@
   <mat-card-actions class="d-flex justify-content-end">
       <button
         mat-raised-button
-        (click)="registerUser()"
+        (click)="editProfile()"
         class="bg-dark text-light"
       >
-        Sign Up
+        Save Changes
       </button>
   </mat-card-actions>
 </mat-card>

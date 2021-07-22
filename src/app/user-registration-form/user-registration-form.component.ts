@@ -4,12 +4,10 @@ import { Component, OnInit, Input } from '@angular/core';
 // Angular Material
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 // Custom Services
-import { UserRegistrationService } from '../fetch-api-data.service';
-
-
-
+import { AppAPI } from '../fetch-api-data.service';
 @Component({
   selector: 'app-user-registration-form',
   templateUrl: './user-registration-form.component.html',
@@ -18,10 +16,19 @@ import { UserRegistrationService } from '../fetch-api-data.service';
 export class UserRegistrationFormComponent implements OnInit {
 
   // The Input decorator defines the components input
-  @Input() userData = { username: '', password: '', email: '', birthday: '' };
+  @Input() userData = { 
+    firstName: '',
+    lastName: '',
+    username: '', 
+    password: '', 
+    email: '', 
+    birthday: '' };
+
+    loading: boolean = false;
+
 
   constructor(
-    public fetchApiData: UserRegistrationService ,
+    public appApi: AppAPI,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
     public snackBar: MatSnackBar
   ) { }
@@ -32,12 +39,15 @@ export class UserRegistrationFormComponent implements OnInit {
 
   // This is the function responsible for sending the form inputs to the backend
   registerUser(): void {
-    this.fetchApiData.userRegistration(this.userData).subscribe((result) => {
+    this.loading = true;
+
+    this.appApi.userRegistration(this.userData).subscribe((result) => {
+      this.loading = false;
       // Logic for a successful user registration goes here! (To be implemented)
       this.dialogRef.close(); // This will close the modal on success!
       console.log(result);
-      this.snackBar.open(result, 'OK', {
-        duration: 2000
+      this.snackBar.open('Profile successfully created! Please sign in.', 'OK', {
+        duration: 4000
       });
     }, err => {
       console.log(err);

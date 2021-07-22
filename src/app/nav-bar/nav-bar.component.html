@@ -1,11 +1,11 @@
-<mat-toolbar class="container-fluid d-flex justify-content-between bg-dark text-light ">
+<nav class="nav container-fluid d-flex justify-content-between text-light p-4">
   <!-- App icon --Link to home -->
-  <span class="app-logo" (click)="goHome()">My Application</span>
+  <span class="app-logo fs-4 action" (click)="goHome()">myFlix</span>
 
   <section class="nav-options text-light d-flex justify-content-between" >
     <!-- Profile Link -->
-    <span class="px-4 " (click)="goToProfile()">Profile</span>
+    <span class="px-4 action" (click)="goToProfile()">Profile</span>
     <!-- Sign Out -->
-    <span class="px-4" (click)="logOut()">Sign Out</span>
+    <span class="px-4 action" (click)="logOut()">Sign Out</span>
   </section>
-</mat-toolbar>
+</nav>

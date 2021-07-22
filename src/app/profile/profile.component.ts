@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 // Service 
-import { GetUserService } from '../fetch-api-data.service'
+import { AppAPI } from '../fetch-api-data.service'
+
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserEditFormComponent } from '../user-edit-form/user-edit-form.component';
+
 
 @Component({
   selector: 'app-profile',
@@ -10,10 +15,14 @@ import { GetUserService } from '../fetch-api-data.service'
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  @Input() userData = {username: '', email: '', birthday: '', firstName: '', lastName: ''}
+
+  constructor(
+    private appApi: AppAPI,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
-    this.getUserData
   }
-
 }

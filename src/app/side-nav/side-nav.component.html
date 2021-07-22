@@ -1,0 +1,23 @@
+<div class="side-nav h-100 d-flex flex-column justify-content-between p-4 shadow">
+  <!-- User Image and Details -->
+  <section class="d-flex flex-column justify-content-center ">
+    <img class="rounded-circle px-5 mb-4" src="https://source.unsplash.com/random/900x900" alt="profile image">
+  
+    <div>
+      <span class="fs-4 text-light">
+      {{ userDetails.firstName ? userDetails.firstName : 'Beloved' }} 
+      {{ userDetails.lastName ? userDetails.lastName : 'User' }}
+      </span>
+    </div>
+    <span class="text-secondary">@ {{userDetails.username}}</span>
+  </section>
+  <!-- Edit or Delete Options -->
+  <section class="d-flex flex-column justify-content-center w-100">
+    <button (click)="openEditDialog()" class="edit action btn btn-sm rounded w-100 mb-3">
+      Edit Profile
+    </button>
+    <button (click)="deleteProfile()" class="action btn btn-sm negative-btn rounded w-100">
+      Delete Profile
+    </button>
+  </section>
+</div>
