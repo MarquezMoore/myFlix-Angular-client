@@ -17,6 +17,12 @@ export class ProfileComponent implements OnInit {
 
   @Input() userData = {username: '', email: '', birthday: '', firstName: '', lastName: ''}
 
+  /**
+   * 
+   * @param appApi 
+   * @param dialog 
+   * @param snackBar 
+   */
   constructor(
     private appApi: AppAPI,
     private dialog: MatDialog,

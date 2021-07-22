@@ -23,6 +23,12 @@ export class MovieCardComponent implements OnInit {
   @Input() favoriteIds: any =[];
   isFav: boolean = false;
 
+  /**
+   * 
+   * @param apiApi 
+   * @param snackBar 
+   * @param dialog 
+   */
   constructor(
     private apiApi: AppAPI,
     private snackBar: MatSnackBar,
@@ -33,7 +39,12 @@ export class MovieCardComponent implements OnInit {
     this.isFavorite()
   }
   
-  
+  /**
+   * 
+   * This function check all movies and determines if it is a favorite if the current user
+   * If it is a favorite, the {@linkcode isFav} variable is updated to true, which will be use to show add or remove button for movie
+   * @returns 
+   */
   public isFavorite(): boolean {
     if( this.favoriteIds.includes(this.movie._id)){
       this.isFav = true;
@@ -41,6 +52,14 @@ export class MovieCardComponent implements OnInit {
     return this.isFav;
   }
 
+  /**
+   * 
+   * @param name 
+   * @param bio 
+   * @param deathday 
+   * @param birthday 
+   * Opens the {@link DirectorDetailsComponent| director details dialog} of current movie
+   */
   public openDirectorDetails(name: string, bio: string, deathday: string, birthday: string): void {
     this.dialog.open(DirectorDetailsComponent, {
       data: {
@@ -53,6 +72,12 @@ export class MovieCardComponent implements OnInit {
     });
   }
   
+  /**
+   * 
+   * @param name 
+   * @param description 
+   * Opens the {@link GenreDetailsComponent| genre details dialog} of current movie
+   */
   public openGenreDetails(name: string, description: string): void {
     this.dialog.open(GenreDetailsComponent, {
       data: {
@@ -63,6 +88,14 @@ export class MovieCardComponent implements OnInit {
     });
   }
   
+  /**
+   * 
+   * @param title 
+   * @param description 
+   * @param genre 
+   * @param director 
+   * Opens the {@link MovieSynopsisComponent| synopsis dialog} of current movie
+   */
   public openSynopsis( title: string, description: string, genre: string, director: string): void {
     this.dialog.open(MovieSynopsisComponent, {
       data: {
@@ -74,6 +107,12 @@ export class MovieCardComponent implements OnInit {
       width: '500px'
     });
   }
+
+  /**
+   * 
+   * @param movieID 
+   * Adds respective movies to user's favorites
+   */
   public addToFavorites(movieID: string): void {
     const username = JSON.parse(localStorage.getItem('user')!).username;
 
@@ -86,6 +125,12 @@ export class MovieCardComponent implements OnInit {
       console.log(err)
     })
   }
+
+  /**
+   * 
+   * @param movieID 
+   * Removes respective movie from user favorites
+   */
   public removeFromFavorites(movieID: string): void {
     const username = JSON.parse(localStorage.getItem('user')!).username;
 
@@ -96,6 +141,10 @@ export class MovieCardComponent implements OnInit {
       console.log(err)
     })
   }
+
+  /**
+   * Closes the dialog component opened after clicking {@link DirectorDetailsComponent }, {@link MoviesSynopsisComponent}, or {@link GenreDetailsComponent} button on movie card
+   */
   public closeDialog(): void {
     this.dialog.closeAll();
   }

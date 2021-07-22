@@ -26,26 +26,31 @@ export class UserRegistrationFormComponent implements OnInit {
 
     loading: boolean = false;
 
-
+  /**
+   * 
+   * @param appApi 
+   * @param dialogRef 
+   * @param snackBar 
+   */
   constructor(
     public appApi: AppAPI,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
     public snackBar: MatSnackBar
   ) { }
 
-  // This us a Angular lifecycle method that is called once this component has recieved all of it data bound inputs
+  
   ngOnInit(): void {
   }
 
-  // This is the function responsible for sending the form inputs to the backend
+  /** 
+   * This function submits post request for user registration
+  */
   registerUser(): void {
     this.loading = true;
-
     this.appApi.userRegistration(this.userData).subscribe((result) => {
-      this.loading = false;
-      // Logic for a successful user registration goes here! (To be implemented)
-      this.dialogRef.close(); // This will close the modal on success!
-      console.log(result);
+      this.loading = false;      
+      this.dialogRef.close();// This will close the modal on success!
+      // console.log(result);
       this.snackBar.open('Profile successfully created! Please sign in.', 'OK', {
         duration: 4000
       });

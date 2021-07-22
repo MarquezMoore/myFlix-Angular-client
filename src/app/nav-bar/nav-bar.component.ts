@@ -12,6 +12,10 @@ import { Router } from '@angular/router'
 })
 export class NavBarComponent implements OnInit {
 
+  /**
+   * 
+   * @param router 
+   */
   constructor(
     private router: Router
   ) { }
@@ -19,14 +23,23 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * This function navigates user to the {@link MovieListComponent | movie list component}
+  */
   public goHome(): void {
     this.router.navigate(['movies']);
   }
 
+  /**
+   * This function navigates user to the {@link ProfileComponent | profile component}
+  */
   public goToProfile(): void {
     this.router.navigate(['profile'])
   }
 
+  /**
+   * This function navigates user to the {@link WelcomeComponent | welcome component}
+  */
   public logOut(): void {
     this.router.navigate(['welcome']);
     localStorage.clear();

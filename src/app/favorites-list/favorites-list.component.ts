@@ -16,6 +16,11 @@ export class FavoritesListComponent implements OnInit {
   @Input() favoriteIds: any[] = [];
   @Input() favorites: any[] = [];
 
+  /**
+   * 
+   * @param appApi 
+   * @param snackBar 
+   */
   constructor(
     private appApi: AppAPI,
     private snackBar: MatSnackBar
@@ -27,6 +32,9 @@ export class FavoritesListComponent implements OnInit {
     this.getFavorites();
   }
 
+  /**
+   * Gets all movies
+   */
   public getMovies(): void {
     this.appApi.getAllMovies().subscribe( result => {
       this.movies = result;
@@ -37,6 +45,9 @@ export class FavoritesListComponent implements OnInit {
     });
   }
 
+  /**
+   * Filter user favorite movies
+   */
   public getFavorites(): void {
     const user = JSON.parse(localStorage.getItem('user')!)
 

@@ -27,6 +27,12 @@ export class UserEditFormComponent implements OnInit {
   };
   loading: boolean = false;
 
+  /**
+   * 
+   * @param appApi 
+   * @param dialog 
+   * @param snackBar 
+   */
   constructor(
     private appApi: AppAPI,
     private dialog: MatDialogRef<UserEditFormComponent>,
@@ -36,6 +42,9 @@ export class UserEditFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * This function submits an put request to update user
+   */
   public editProfile(): void{
     this.loading = true;
     const username = JSON.parse(localStorage.getItem('user')!).username;

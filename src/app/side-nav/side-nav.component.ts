@@ -21,6 +21,13 @@ export class SideNavComponent implements OnInit {
 
   userDetails: any;
 
+  /**
+   * 
+   * @param appApi 
+   * @param dialog 
+   * @param snackBar 
+   * @param router 
+   */
   constructor(
     private appApi: AppAPI,
     private dialog: MatDialog,
@@ -32,10 +39,16 @@ export class SideNavComponent implements OnInit {
     this.getUserDetails()
   }
 
+  /**
+   * This funciton submits a get request for the current user
+   */
   public getUserDetails(): void {
     this.userDetails = JSON.parse(localStorage.getItem('user')!);
   }
 
+  /**
+   * This function submits a delete request for the current user
+   */
   public deleteProfile(): void{
     const username: string = JSON.parse(localStorage.getItem('user')!).username; 
     const consent = confirm('Are you sure you want to delete your profile?');

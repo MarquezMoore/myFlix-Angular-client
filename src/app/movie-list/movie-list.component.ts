@@ -17,17 +17,24 @@ export class MovieListComponent implements OnInit {
   movies: any[] = [];
   favoriteIds: any[] = [];
 
+  /**
+   * 
+   * @param appApi 
+   * @param snackBar 
+   */
   constructor(
     private appApi: AppAPI,
     private snackBar: MatSnackBar
   )  { }
 
-  // the following lifecycle hook in called when react in finished creating the component
   ngOnInit(): void {
     this.getMovies();
     this.getFavorites();
   }
 
+  /**
+   * This function retrive all movies for app database
+   */
   public getMovies(): void {
     this.appApi.getAllMovies().subscribe( result => {
       console.log(result);
@@ -41,6 +48,9 @@ export class MovieListComponent implements OnInit {
     });
   }
 
+  /**
+   * This function retrives the user's favorites movies
+   */
   public getFavorites(): void {
     const user = JSON.parse(localStorage.getItem('user')!)
 
