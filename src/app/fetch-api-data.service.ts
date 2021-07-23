@@ -4,19 +4,19 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-/* 
-  Table of Contents (Services)
-    1.) User Registration 
-    2.) User Login
-    3.) Get Movies
-    4.) Get Director
-    5.) Get Genre 
-    6.) Get User
-    7.) Remove from Favorites
-    8.) Add to Favorites
-    9.) Edit User
-    10.) Delete User
-    11.) Delete Movie
+/**
+  *Table of Contents (Services)
+   * 1.) User Registration 
+   * 2.) User Login
+   * 3.) Get Movies
+   * 4.) Get Director
+   * 5.) Get Genre 
+   * 6.) Get User
+   * 7.) Remove from Favorites
+   * 8.) Add to Favorites
+   * 9.) Edit User
+   * 10.) Delete User
+   * 11.) Delete Movie
 */
 
 
@@ -30,7 +30,7 @@ const url = 'https://my-fav-flix.herokuapp.com/';
 })
 
 /* 
-  1.) User Registration
+  * 1.) User Registration
 */
 export class AppAPI {
   token: string | null = localStorage.getItem('token');
@@ -45,14 +45,14 @@ export class AppAPI {
       catchError(this.handleError)
     );
   }
-  /* 
-    2.) User Login -- post /login
+  /**
+    * 2.) User Login -- post /login
   */
   public userLogin(userData: object): Observable<any> {
     console.log(userData)
     return this.http.post(`${url}login`, userData)
   }
-  /* 
+  /**
     3.) Get Movies
   */
   // API Call
@@ -68,8 +68,8 @@ export class AppAPI {
       catchError(this.handleError)
     );
   }
-  /* 
-    4.) Get Director -- movies/:title/director
+  /**
+    * 4.) Get Director -- movies/:title/director
   */
   // API Call
   public getDirector(title: string): Observable<any> {
@@ -82,8 +82,8 @@ export class AppAPI {
       }
     );
   }
-  /* 
-    5.) Get Genre -- genre/:genre
+  /**
+    * 5.) Get Genre -- genre/:genre
   */
   // API Call
   public getGenre(genre: string): Observable<any> {
@@ -95,8 +95,8 @@ export class AppAPI {
       }
     );
   }
-  /* 
-    6.) Get User -- users/:username
+  /**
+    * 6.) Get User -- users/:username
   */
   // API Call
   public getUser(username: string): Observable<any> {
@@ -108,8 +108,8 @@ export class AppAPI {
       }
     );
   }
-  /* 
-    7.) Remove From Favorites -- users/:username/:movieID
+  /**
+    * 7.) Remove From Favorites -- users/:username/:movieID
   */
   // API Call
   public removeFromFavorites(username: string, movieID: string): Observable<any> {
@@ -121,8 +121,8 @@ export class AppAPI {
       }
     );
   }
-  /* 
-    8.) Add to Favorites -- users/:username/:movieID
+  /**
+    * 8.) Add to Favorites -- users/:username/:movieID
   */
    // API Call
    public addToFavorites(username: string, movieID: string): Observable<any> {
@@ -135,8 +135,8 @@ export class AppAPI {
       }
     );
   }
-  /* 
-    9.) Edit User -- put users/:username
+  /**
+    * 9.) Edit User -- put users/:username
   */
   // API Call
   public editUser(username: string, userData: any): Observable<any> {
@@ -147,8 +147,8 @@ export class AppAPI {
       })
     });
   }
-  /* 
-    10.) Delete User -- delete users/:username
+  /**
+    * 10.) Delete User -- delete users/:username
   */
   // API Call
   public deleteUser(username: string): Observable<any> {
@@ -160,8 +160,8 @@ export class AppAPI {
       }
     );
   }
-  /* 
-    11.) Delete Movie -- delete users/:username/:movieID
+  /**
+    * 11.) Delete Movie -- delete users/:username/:movieID
   */
   // API Call
   public deleteMovie(username: string, movieID: string): Observable<any> {
@@ -181,6 +181,7 @@ export class AppAPI {
 
   // Error Handeling
   private handleError(error: HttpErrorResponse ): any {
+    console.log(error.error)
     if (error.error instanceof ErrorEvent) {
       console.error('Some error occurred:', error.error.message);
     } else {
@@ -189,7 +190,7 @@ export class AppAPI {
         `Error body is: ${error.error}`);
     }
     return throwError(
-      `Unable to ... Please try again.`);
+      `An error has occured ... Please try again.`);
   }
 }
 

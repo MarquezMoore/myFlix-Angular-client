@@ -61,7 +61,7 @@ export class FavoritesListComponent implements OnInit {
         if(result.movies.includes(m._id)) {
           this.favorites.push(m)
         }
-        console.log(this.favorites)
+        // console.log(this.favorites)
       });
       
     }, err => {
