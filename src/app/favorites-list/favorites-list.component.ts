@@ -29,7 +29,6 @@ export class FavoritesListComponent implements OnInit {
   // the following lifecycle hook in called when react in finished creating the component
   ngOnInit(): void {
     this.getMovies();
-    this.getFavorites();
   }
 
   /**
@@ -38,7 +37,8 @@ export class FavoritesListComponent implements OnInit {
   public getMovies(): void {
     this.appApi.getAllMovies().subscribe( result => {
       this.movies = result;
-      return this.movies;
+      // return this.movies;
+      this.getFavorites();
     }, err => {
       console.log(`getMovies error in MovieCardComponent: ${err}`)
       this.snackBar.open(`App failed to open movies.. Pleas try again later..`, 'OK')
@@ -49,6 +49,7 @@ export class FavoritesListComponent implements OnInit {
    * Filter user favorite movies
    */
   public getFavorites(): void {
+    
     const user = JSON.parse(localStorage.getItem('user')!)
 
     this.appApi.getUser(user.username).subscribe( result => {
@@ -56,12 +57,12 @@ export class FavoritesListComponent implements OnInit {
       // Store IDs of favorite movies -- Used in to generate movieCard 
       this.favoriteIds = result.movies;
 
+      
       // Store complete favorites movies object
       this.movies.forEach( m => {
         if(result.movies.includes(m._id)) {
           this.favorites.push(m)
         }
-        // console.log(this.favorites)
       });
       
     }, err => {
