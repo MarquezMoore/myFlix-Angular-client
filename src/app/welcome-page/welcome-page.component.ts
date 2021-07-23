@@ -29,7 +29,7 @@ export class WelcomePageComponent implements OnInit{
   }
 
   /**
-   * This function opens the {@link UserRegistrationFromComponent | registration from dialog}
+   * This function opens the {@link UserRegistrationFormComponent | registration from dialog}
    */
   openUserRegistrationDialog(): void {
     this.dialog.open(UserRegistrationFormComponent, {
@@ -38,7 +38,7 @@ export class WelcomePageComponent implements OnInit{
   }
 
   /**
-   * This function opens the {@link UserLoginFromComponent | login from dialog}
+   * This function opens the {@link UserLoginFormComponent | login from dialog}
    */
   openUserLoginDialog(): void {
     this.dialog.open(UserLoginFormComponent, {
