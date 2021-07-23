@@ -133,10 +133,12 @@ export class MovieCardComponent implements OnInit {
    */
   public removeFromFavorites(movieID: string): void {
     const username = JSON.parse(localStorage.getItem('user')!).username;
-
+    
     this.apiApi.removeFromFavorites(username, movieID).subscribe( result => {
       this.isFav = false;
-      this.snackBar.open(`${this.movie.title} was removed from favorites.`, 'OK')
+      this.snackBar.open(`${this.movie.title} was removed from favorites.`, 'OK', {
+        duration: 4000
+      })
     }, err => {
       console.log(err)
     })

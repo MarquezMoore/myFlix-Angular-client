@@ -29,7 +29,6 @@ export class MovieListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMovies();
-    this.getFavorites();
   }
 
   /**
@@ -38,7 +37,7 @@ export class MovieListComponent implements OnInit {
   public getMovies(): void {
     this.appApi.getAllMovies().subscribe( result => {
       this.movies = result;
-      return this.movies;
+      this.getFavorites();
     }, err => {
       console.log(`getMovies error in MovieCardComponent: ${err}`)
       this.snackBar.open(`App failed to open movies.. Pleas try again later..`, 'OK', {

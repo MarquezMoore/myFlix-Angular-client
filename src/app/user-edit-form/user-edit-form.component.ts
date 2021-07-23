@@ -48,7 +48,7 @@ export class UserEditFormComponent implements OnInit {
   public editProfile(): void{
     this.loading = true;
     const username = JSON.parse(localStorage.getItem('user')!).username;
-   
+
     this.appApi.editUser(username, this.userData).subscribe( result => {
       this.loading = false;
       this.snackBar.open('User profile successfully updated!', 'OK', {

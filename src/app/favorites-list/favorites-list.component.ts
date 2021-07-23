@@ -57,7 +57,6 @@ export class FavoritesListComponent implements OnInit {
       // Store IDs of favorite movies -- Used in to generate movieCard 
       this.favoriteIds = result.movies;
 
-      
       // Store complete favorites movies object
       this.movies.forEach( m => {
         if(result.movies.includes(m._id)) {
