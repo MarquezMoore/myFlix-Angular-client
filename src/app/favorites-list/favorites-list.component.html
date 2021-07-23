@@ -1,9 +1,8 @@
-<div class="d-flex flex-wrap">
+<div class="d-flex flex-wrap ">
   <app-movie-card
-  class="p-3 col-sm-6 col-lg-4" 
-  *ngFor="let movie of favorites;" 
-  [movie]="movie"
-  [favoriteIds]="favoriteIds"
-></app-movie-card>
-
+    class="p-3 col-sm-6 col-lg-4" 
+    *ngFor="let movie of favorites;" 
+    [movie]="movie"
+    [favoriteIds]="favoriteIds"
+  ></app-movie-card>
 </div>

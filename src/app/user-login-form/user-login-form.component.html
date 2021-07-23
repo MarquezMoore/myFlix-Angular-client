@@ -7,7 +7,7 @@
       <mat-spinner
       diameter="35"></mat-spinner>
     </div>
-    <form class="login-form">
+    <form class="login-form" *ngIf="loading === false">
       <mat-form-field class="w-100">
         <input
           matInput
