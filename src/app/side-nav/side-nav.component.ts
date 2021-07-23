@@ -52,17 +52,23 @@ export class SideNavComponent implements OnInit {
   public deleteProfile(): void{
     const username: string = JSON.parse(localStorage.getItem('user')!).username; 
     const consent = confirm('Are you sure you want to delete your profile?');
-      console.log(consent);
+      
       if( consent ) {
-        console.log('Deleting')
+        
         this.appApi.deleteUser(username).subscribe( result => {
+          console.log(result)
+          localStorage.clear();
+          this.router.navigate(['welcome']);
+
           this.snackBar.open('User was successfully deleted.', 'OK', {
             duration: 4000
           })
-          this.router.navigate(['welcome']);
         }, err => {
-          
           console.log(`deleteUser in SideNavComponent error...`)
+          console.log(err)
+          this.snackBar.open('Unable to delete user.', 'OK', {
+            duration: 4000
+          })
         })
       }
   }
