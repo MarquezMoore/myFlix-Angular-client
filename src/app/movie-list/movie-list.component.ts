@@ -37,7 +37,6 @@ export class MovieListComponent implements OnInit {
    */
   public getMovies(): void {
     this.appApi.getAllMovies().subscribe( result => {
-      console.log(result);
       this.movies = result;
       return this.movies;
     }, err => {
@@ -62,5 +61,4 @@ export class MovieListComponent implements OnInit {
       console.log(`Error in getUserData of FavoritesListComponent: ${err}`);
     });
   }
-
 }

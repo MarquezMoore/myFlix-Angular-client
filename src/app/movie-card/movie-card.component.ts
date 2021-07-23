@@ -136,7 +136,6 @@ export class MovieCardComponent implements OnInit {
 
     this.apiApi.removeFromFavorites(username, movieID).subscribe( result => {
       this.isFav = false;
-      console.log(`${this.movie} is ${this.isFav ? '' : 'not'} a favorite`)
       this.snackBar.open(`${this.movie.title} was removed from favorites.`, 'OK')
     }, err => {
       console.log(err)

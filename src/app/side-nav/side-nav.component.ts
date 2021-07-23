@@ -56,7 +56,6 @@ export class SideNavComponent implements OnInit {
       if( consent ) {
         
         this.appApi.deleteUser(username).subscribe( result => {
-          console.log(result)
           localStorage.clear();
           this.router.navigate(['welcome']);
 
@@ -73,6 +72,9 @@ export class SideNavComponent implements OnInit {
       }
   }
 
+   /**
+    * Opens the {@link UserEditFormComponent | user edit form}  
+   */
   public openEditDialog(): void{
     this.dialog.open(UserEditFormComponent, {
       width: '400px'
