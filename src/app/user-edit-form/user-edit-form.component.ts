@@ -51,12 +51,12 @@ export class UserEditFormComponent implements OnInit {
    
     this.appApi.editUser(username, this.userData).subscribe( result => {
       this.loading = false;
-      // console.log(this.userData)
       this.snackBar.open('User profile successfully updated!', 'OK', {
         duration: 4000
       })
       this.dialog.close();
-
+      // Reload current window
+      window.location.reload();
     }, err => {
       this.loading = false;
       this.snackBar.open('Unable to update profile... Try again later.', 'OK', {
