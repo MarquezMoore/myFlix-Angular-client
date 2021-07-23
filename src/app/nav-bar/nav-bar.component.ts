@@ -38,7 +38,7 @@ export class NavBarComponent implements OnInit {
   }
 
   /**
-   * This function navigates user to the {@link WelcomeComponent | welcome component}
+   * This function clears userData in storage and navigates user to the {@link WelcomePageComponent | welcome component}.
   */
   public logOut(): void {
     this.router.navigate(['welcome']);
