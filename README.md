@@ -1,28 +1,64 @@
-# MyFlixAngularClient
+# MyFlix Angular Client
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.
+<div align="center">
+  <a href="https://marquezmoore.github.io/myFlix-Angular-client/" alt="View in browser">Veiw in Browser</a>
+</div>
 
-## Development server
+### Browser Demo
+![MyFlix Browser Demo!](./src/assets/myFlix.gif)
+
+### Objective
+Using Angular, build the client-side for an application called myFlix based on
+its existing server-side code (REST API and database), with supporting
+documentation.
+
+### Technologies
+- Node.js
+- Angular
+- Angular Material
+- RxJS
+
+### Features
+- Fetches list of all movies and their related details from database and display to users.
+- Allows users to filter movies via search bar.
+- Allows users select a movie to view details relating to the selected movie.
+- Allows registration and login.
+- Fetches data about a genre, with a name and description.
+- Fetches data about a director of listed movies.
+- Allows users to update their user info.
+- Allows existing users to delete their account.
+- Allows users add of remove movies from their favorites.
+
+### Technical-Specks
+- Application is a Single Page Application (SPA).
+- Application Angular router to navigate between views.
+- Application was writtern using the Angular framework.
+- Application was styled with bootstrap and Angular-marterial UI components.
+- Application is host on gh-pages.
+
+## Build Instructions
+### Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+### Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+### Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+### Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+### Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+### Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# myFlix-Angular-client
+
+
